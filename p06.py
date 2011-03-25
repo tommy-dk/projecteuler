@@ -15,4 +15,3 @@ for i in xrange(1,101):
 print (squares_of_sum**2) - sum_of_squares
 
 print "Time taken: %s" % str(time.time() - st)
-
