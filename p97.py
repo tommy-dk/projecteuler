@@ -1,5 +1,9 @@
 #!/usr/bin/env python
 
-result = 28433 * 2**7830457 + 1
-result = str(result)
-print result[-10:]
+import time
+st = time.time()
+
+result = (28433 * 2**7830457 + 1) % (10**10)
+print str(result)[-10:]
+
+print "Time taken: %s" % str(time.time() - st)
