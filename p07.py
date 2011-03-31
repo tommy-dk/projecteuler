@@ -1,24 +1,17 @@
 #!/usr/bin/env python
 
-def primes(n): 
-    if n==2: return [2]
-    elif n<2: return []
-    s=range(3,n+1,2)
-    mroot = n ** 0.5
-    half=(n+1)/2-1
-    i=0
-    m=3
-    while m <= mroot:
-        if s[i]:
-            j=(m*m-3)/2
-            s[j]=0
-            while j<half:
-                s[j]=0
-                j+=m
-        i=i+1
-        m=2*i+3
-    return [2]+[x for x in s if x]
+"""
+By listing the first six prime numbers: 2, 3, 5, 7, 11, and 13, we can see that the 6th prime is 13.
+
+What is the 10001st prime number?
+"""
+
+import time
+st = time.time()
+
+from euler import primes
 
 numbers = primes(200000)
-
 print numbers[10000]
+
+print "Time taken: %s" % str(time.time() - st)
