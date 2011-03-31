@@ -27,4 +27,3 @@ print triangle_words
 print len([num for num in [sum([ord(letter) - 64 for letter in list(word)]) for word in open('p42.txt', 'r').readline().replace('\"', '').split(',')] if num in [0.5 * n * (n + 1) for n in range(500)]])
 
 print "Time taken: %s" % str(time.time() - st)
-

@@ -1,47 +1,36 @@
 #!/usr/bin/env python
 
-def primes(n): 
-    if n==2: return [2]
-    elif n<2: return []
-    s=range(3,n+1,2)
-    mroot = n ** 0.5
-    half=(n+1)/2-1
-    i=0
-    m=3
-    while m <= mroot:
-        if s[i]:
-            j=(m*m-3)/2
-            s[j]=0
-            while j<half:
-                s[j]=0
-                j+=m
-        i=i+1
-        m=2*i+3
-    return [2]+[x for x in s if x]
+"""
+The number, 197, is called a circular prime because all rotations of the digits: 197, 971, and 719, are themselves prime.
 
-def is_prime(n):
-    import math
-    n = int(n)
-    n = abs(n)
-    i = 2
-    while i <= math.sqrt(n):
-        if n % i == 0:
-            return False
-        i += 1
-    return True
+There are thirteen such primes below 100: 2, 3, 5, 7, 11, 13, 17, 31, 37, 71, 73, 79, and 97.
+
+How many circular primes are there below one million?
+"""
+
+import time
+st = time.time()
+
+from euler import primes, is_prime
 
 def rotate_seq (seq):
     for i in range (len (seq)):
         yield seq[i:] + seq[:i]
 
+def is_circular(n):
+    for i in rotate_seq(str(n)):
+        if not is_prime(i):
+            return False
+    return True
 
-numbers = primes(100)
+
+numbers = primes(1000000)
 result = 0
 
 for i in numbers:
-    pstr = str(i)
-    for j in rotate_seq(pstr):
-        if is_prime(j):
-            result += 1
+    if is_circular(i):
+        result += 1
 
 print result
+
+print "Time taken: %s" % str(time.time() - st)
