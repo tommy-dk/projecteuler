@@ -1,7 +1,10 @@
 #!/usr/bin/env python
 
-grid = [2,2]
+"""
+Uses Central binomial coefficient formula
+"""
 
-for i in grid[0]:
-    for j in grid[1]:
-        if 
+import math
+
+grid = 20
+print math.factorial(2*grid)/math.factorial(grid)**2
